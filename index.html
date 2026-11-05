@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>킹덤틴즈 25과: 힘들어도 선하신 하나님을 믿어요 (욥기)</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- html2canvas for Capturing Result -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      padding-bottom: env(safe-area-inset-bottom);
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+    .bible-text {
+      font-family: 'Nanum Myeongjo', serif;
+      line-height: 2.0;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    /* Input Styling for seamless inline text flow */
+    .qt-input {
+      font-family: 'Pretendard', sans-serif;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
+    .fade-solution {
+      animation: fadeIn 0.35s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <div class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <!-- Top Brand Header -->
+    <header class="px-4 py-2.5 border-b border-slate-100 bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Kingdom Teens</span>
+          <h1 class="text-xs md:text-sm font-bold text-slate-200">킹덤틴즈 25과 (욥기 1장, 42장)</h1>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button onclick="openResetModal()" class="bg-slate-800 hover:bg-rose-950 text-rose-300 text-[11px] px-2.5 py-1 rounded flex items-center gap-1 transition-all" title="진도 초기화">
+            <i class="fa-solid fa-rotate-left"></i> <span class="hidden sm:inline">처음부터 풀기</span>
+          </button>
+          <button onclick="shareAppUrl()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs px-2.5 py-1 rounded flex items-center gap-1 transition-all">
+            <i class="fa-solid fa-share-nodes"></i> <span class="hidden sm:inline">초대 링크 복사</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Weekly Study Day Navigation (Monday to Friday, 0단계 제외 완료) -->
+    <nav class="bg-white px-3 py-2.5 shadow-sm">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 overflow-x-auto">
+        <div class="flex items-center gap-1.5 shrink-0">
+          <span class="text-xs font-bold text-slate-400 mr-1.5"><i class="fa-solid fa-calendar-day"></i> 주간 묵상:</span>
+          <button id="day-tab-mon" onclick="switchDay('mon')" class="px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-indigo-600 text-white transition-all shadow-sm shrink-0">
+            월(1단계)
+          </button>
+          <button id="day-tab-tue" onclick="switchDay('tue')" class="px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0">
+            화(2단계)
+          </button>
+          <button id="day-tab-wed" onclick="switchDay('wed')" class="px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0">
+            수(3단계)
+          </button>
+          <button id="day-tab-thu" onclick="switchDay('thu')" class="px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0">
+            목(4단계)
+          </button>
+          <button id="day-tab-fri" onclick="switchDay('fri')" class="px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0">
+            금(5단계)
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0 font-semibold">
+          <div class="bg-indigo-50 text-indigo-800 border border-indigo-200 text-[11px] font-bold px-2.5 py-1 rounded-lg">
+            <span id="day-badge-name">월요일 진행 중</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile View Switcher (Reading vs Activity) -->
+    <div class="lg:hidden p-3 bg-slate-50/90 backdrop-blur-sm border-t border-slate-100">
+      <div class="max-w-md mx-auto bg-white p-1 rounded-xl shadow-inner border border-slate-200/60 flex">
+        <button id="tab-btn-reading" onclick="switchMobileTab('reading')" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-lg text-indigo-800 bg-indigo-50 transition-all flex items-center justify-center gap-1.5">
+          📖 <span id="reading-tab-label">성경 말씀 읽기</span>
+        </button>
+        <button id="tab-btn-activity" onclick="switchMobileTab('activity')" class="flex-1 py-2 text-xs md:text-sm font-bold rounded-lg text-slate-500 hover:text-slate-800 transition-all flex items-center justify-center gap-1.5">
+          ✏️ <span id="activity-tab-label">문제 풀기</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- LEFT PANEL: Bible Verses & Reading Column -->
+    <section id="pane-reading" class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-5 md:p-7 flex flex-col shadow-sm max-h-[calc(100vh-160px)] overflow-y-auto block">
+      
+      <!-- Panel Header Info -->
+      <div class="border-b border-slate-100 pb-3 mb-3">
+        <div class="flex items-center justify-between mb-2">
+          <h2 id="left-panel-title" class="text-base md:text-lg font-extrabold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-scroll text-indigo-600"></i> 성경 말씀 읽기
+          </h2>
+          <span id="left-panel-meta" class="text-xs bg-indigo-50 text-indigo-800 border border-indigo-200 px-2.5 py-0.5 rounded-full font-bold whitespace-nowrap">욥기 1장 전체</span>
+        </div>
+
+        <!-- Bible Chapter Quick Navigation Buttons -->
+        <div id="bible-chapter-nav" class="flex items-center gap-1 overflow-x-auto pb-1 pt-1 scrollbar-none">
+          <!-- Rendered dynamically based on active day -->
+        </div>
+      </div>
+      
+      <!-- BIBLE TEXT CONTAINER (Active for Monday, Tuesday, Thursday) -->
+      <div id="left-content-bible" class="bible-text text-slate-700 space-y-4 text-[14px] md:text-[15px] text-justify font-medium">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <!-- KINGDOM READING CONTAINER (Active for Wednesday) -->
+      <div id="left-content-reading" class="hidden text-slate-700 space-y-6 bible-text font-medium text-justify">
+        <!-- Loaded dynamically via JavaScript -->
+      </div>
+
+      <!-- QUIZ GUIDE INTRO CONTAINER (Active for Friday) -->
+      <div id="left-content-quizintro" class="hidden text-slate-700 space-y-5">
+        <!-- Loaded dynamically via JavaScript -->
+      </div>
+
+    </section>
+
+    <!-- RIGHT PANEL: Activity / Questions Panel -->
+    <section id="pane-activity" class="lg:col-span-7 flex flex-col gap-6 hidden lg:flex">
+      
+      <div id="right-activity-container" class="space-y-6">
+
+        <!-- ==================== 월요일 (1단계) 콘텐츠 ==================== -->
+        <div id="quiz-day-mon" class="space-y-6">
+          <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold uppercase">STEP 01</span>
+              <h3 class="text-base font-extrabold mt-1">1단계(월) - 관찰 해석 1: 의인에게 닥친 억울한 고난</h3>
+              <p class="text-[11px] text-white/90 mt-0.5">목표: 욥기 1:1-22을 읽고 하나님께 인정받는 의인도 억울한 고난을 겪을 수 있음을 배웁니다.</p>
+            </div>
+            <span class="text-3xl opacity-30"><i class="fa-solid fa-cloud-bolt"></i></span>
+          </div>
+
+          <!-- Q1 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="mon-card-1">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  하나님께서는 온 천사들과 사탄이 모인 자리에서 한 사람을 크게 칭찬하셨어요. 그와 같이 온전하고 정직하여 하나님을 경외하며 악에서 떠난 자는 세상에 없다고 말씀하신 이 사람은 누구인가요? <span class="text-indigo-700 font-semibold text-xs whitespace-nowrap">(욥 1:1, 8)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 하나님께서 세상에 이와 같은 자가 없다며 자랑스럽게 인정하신 사람은 바로 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-mon-1" placeholder="ㅇ" class="qt-input w-16 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkMonAnswer(1)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span> 이에요.</span>
+                  
+                  <div id="badge-mon-1" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-mon-1" class="hidden fade-solution bg-indigo-50/70 border border-indigo-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 욥은 하나님과 사람 사이에 바른 관계를 맺고 지내며, 혹시라도 자녀들이 무의식중에 죄를 범하여 마음으로 하나님을 욕되게 했을까 봐 늘 번제로 성결하게 예배를 드렸던 경건한 사람이었어요. 하나님께서는 욥이 진심으로 하나님을 사랑하고 죄의 문제에 민감하게 반응하는 모습을 세상에서 최고라며 인정하고 기뻐하신 것이랍니다!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="mon-card-2">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  하나님께서 신실한 욥을 칭찬하시자 욥의 경건을 이기적인 것이라 비난하며 반박한 존재가 있어요. 하나님의 손을 펴서 욥의 모든 소유물을 치면 틀림없이 주를 향하여 욕할 것이라고 고발한 '참소자'는 누구인가요? <span class="text-indigo-700 font-semibold text-xs whitespace-nowrap">(욥 1:9-11)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 욥의 소유물을 치면 하나님을 욕할 것이라며 부정적으로 고발한 참소자는 바로 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-mon-2" placeholder="ㅅㅌ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkMonAnswer(2)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span> 이에요.</span>
+                  
+                  <div id="badge-mon-2" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-mon-2" class="hidden fade-solution bg-indigo-50/70 border border-indigo-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 사탄은 욥이 하나님을 잘 섬기는 이유가 오직 풍성한 복과 재산을 받았기 때문(기복주의)이라고 비난했어요. 만약 하나님이 주신 복을 다 거두어가시면 욥의 믿음도 순식간에 무너져버릴 것이라며 하나님께 당돌한 도전을 던진 것이랍니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 (가축 4가지 초성 분할 입력) -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="mon-card-3">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  하나님의 허락 아래 사탄의 무시무시한 공격이 시작되었어요. 세 명의 사환이 연달아 달려와 욥에게 슬픈 소식을 전했어요. 스바 사람과 갈대아 사람의 약탈, 그리고 하늘에서 떨어진 불 때문에 욥이 한꺼번에 잃어버린 가축(재산) 종류 4가지는 무엇인가요? <span class="text-indigo-700 font-semibold text-xs whitespace-nowrap">(욥 1:14-17)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 욥이 갑작스럽게 약탈당하고 살라져 버린 가축은 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-mon-3-1" placeholder="ㅅ" class="qt-input w-14 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkMonAnswer(3)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>와 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-mon-3-2" placeholder="ㅇㄴㄱ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkMonAnswer(3)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>, 그리고 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-mon-3-3" placeholder="ㅇ" class="qt-input w-14 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkMonAnswer(3)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>과 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-mon-3-4" placeholder="ㄴㅌ" class="qt-input w-16 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkMonAnswer(3)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>예요.</span>
+                  
+                  <div id="badge-mon-3" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-mon-3" class="hidden fade-solution bg-indigo-50/70 border border-indigo-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 첫 번째 사환은 스바 사람이 소와 암나귀를 빼앗았다고 했고, 두 번째 사환은 하늘에서 내린 불이 양을 살라버렸다고 보고했어요. 이어서 세 번째 사환은 갈대아 사람들이 세 무리를 지어 들이닥쳐 낙타를 약탈해 갔다고 전했지요. 욥이 가졌던 수많은 가축과 재산이 눈 깜짝할 사이에 단 하나도 남지 않고 모두 사라져버린 끔찍한 순간이었어요. 모두 다 사탄의 공격 때문이었어요.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="mon-card-4">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  수많은 재산이 모두 증발한 욥에게 가장 절망적인 소식이 들렸어요. 거친 들에서 불어온 큰 바람이 집 네 모퉁이를 쳐서 무너뜨리는 바람에 누가 한꺼번에 깔려 죽었나요? <span class="text-indigo-700 font-semibold text-xs whitespace-nowrap">(욥 1:18-19)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 거친 들에서 불어온 큰 바람 때문에 집이 무너져 욥의 소중한 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-mon-4" placeholder="ㅈㄴㄷ" class="qt-input w-24 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkMonAnswer(4)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>이 한꺼번에 깔려 죽었어요.</span>
+                  
+                  <div id="badge-mon-4" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2.5 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-mon-4" class="hidden fade-solution bg-indigo-50/70 border border-indigo-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 앞선 재산의 손실과는 비교조차 할 수 없는 가장 충격적이고 슬픈 재앙이 일어났어요. 부모에게 가장 큰 슬픔이 자녀를 잃는 것인데, 욥은 함께 모여 즐겁게 잔치를 벌이던 아들 일곱과 딸 셋, 즉 열 자녀를 한순간에 모두 잃어 버리게 되었어요.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q5 (생각 나누기 서술형) -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="mon-card-5">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">5</span>
+              <div class="space-y-3 w-full">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  [생각 나누기] 욥은 자신이 왜 이런 극심한 고난을 받는지, 그 배후에 사탄의 사악한 공격이 있다는 사실을 전혀 모른 채 인생의 거대한 폭풍우를 맞이했습니다. 우리도 살아가다 보면 학업이나 친구 관계, 혹은 가정 안에서 '도대체 나한테 왜 이런 억울하고 힘든 일이 생기지?' 하고 원인을 알 수 없는 고난을 만날 때가 있습니다. 이처럼 당장 눈앞의 현실이 다 이해되지 않는 역경 속에서도, 우리는 어떤 마음으로 버티며 하나님을 신뢰해야 할지 자유롭게 적어 보세요.
+                </p>
+                <textarea id="ans-mon-5" rows="3" placeholder="예: 당장 내 머리로는 왜 이런 일이 생겼는지 다 이해할 수 없더라도, 하나님께서 나를 여전히 사랑하시고 내 편이시라는 사실을 잊지 않고 원망 대신 기도로 주님을 굳게 붙잡겠습니다... (3자 이상 입력)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base" oninput="checkMonAnswer(5)"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 화요일 (2단계) 콘텐츠 ==================== -->
+        <div id="quiz-day-tue" class="space-y-6 hidden">
+          <div class="bg-gradient-to-r from-amber-500 to-amber-700 text-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold uppercase">STEP 02</span>
+              <h3 class="text-base font-extrabold mt-1">2단계(화) - 관찰 해석 2: 원망 대신 드린 예배와 참된 신뢰</h3>
+              <p class="text-[11px] text-white/90 mt-0.5">목표: 욥기 1:20-22 및 42장을 읽고 억울한 고난 중에도 원망하지 않고 하나님을 예배함을 배웁니다.</p>
+            </div>
+            <span class="text-3xl opacity-30"><i class="fa-solid fa-hands-praying"></i></span>
+          </div>
+
+          <!-- Q1 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="tue-card-1">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  욥은 모든 재산과 열 명의 자녀를 순식간에 잃는 비극을 맞이했어요. 사탄의 공격 때문이었죠. 인간으로서 감당하기 힘든 재앙을 만난 욥이, 그 자리에서 일어나 겉옷을 찢고 머리털을 민 후 땅에 엎드려 가장 먼저 행한 것은 무엇인가요? <span class="text-amber-700 font-semibold text-xs whitespace-nowrap">(욥 1:20)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 모든 것을 잃은 절망 속에서 욥은 땅에 엎드려 하나님을 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-tue-1" placeholder="ㅇㅂ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-amber-600 focus:outline-none font-bold text-amber-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkTueAnswer(1)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span> 했어요.</span>
+                  
+                  <div id="badge-tue-1" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-tue-1" class="hidden fade-solution bg-amber-50/70 border border-amber-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 보통 사람이라면 억울한 일을 당했을 때 불평과 원망을 터뜨리기 마련이에요. 하지만 욥의 첫 반응은 놀랍게도 하나님을 향한 예배였답니다. 욥은 비탄과 애통함 속에서도 온 세상을 다스리시는 하나님의 주권을 온전히 신뢰하며 찬양하는 자리로 나아갔어요!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="tue-card-2">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  "내가 모태에서 알몸으로 나왔사온즉 또한 알몸이 그리로 돌아가올지라 주신 이도 여호와시요 거두신 이도 여호와시오니 여호와의 이름이 찬송을 받으실지니이다!" 이 말은 누가 어떤 상황에서 드린 찬송인가요? <span class="text-amber-700 font-semibold text-xs whitespace-nowrap">(욥 1:21)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 모든 것을 잃어 슬픔 가운데 있던 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-tue-2" placeholder="ㅇ" class="qt-input w-16 text-center border-b-2 border-slate-300 bg-transparent focus:border-amber-600 focus:outline-none font-bold text-amber-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkTueAnswer(2)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span> 이 드린 찬송이에요.</span>
+                  
+                  <div id="badge-tue-2" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-tue-2" class="hidden fade-solution bg-amber-50/70 border border-amber-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 욥은 내게 있는 모든 것이 원래 하나님의 것이며, 하나님의 선하신 뜻 아래 도로 가져가실 수도 있다는 사실을 완벽하게 인정했어요. 이 고백을 통해 "복을 다 빼앗으면 욥이 하나님을 욕할 것"이라던 사탄의 이기적인 참소가 완벽하게 거짓임이 증명되었답니다!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="tue-card-3">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  욥은 자녀와 재산을 잃는 이 모든 청천벽력 같은 일들을 겪으면서도 결코 범죄하지 않았고, 특히 하나님을 향하여 무엇을 하지 않았나요? <span class="text-amber-700 font-semibold text-xs whitespace-nowrap">(욥 1:22)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 욥은 이 모든 재앙 속에서도 하나님을 향하여 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-tue-3" placeholder="ㅇㅁ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-amber-600 focus:outline-none font-bold text-amber-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkTueAnswer(3)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span> 하지 않았어요.</span>
+                  
+                  <div id="badge-tue-3" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2.5 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-tue-3" class="hidden fade-solution bg-amber-50/70 border border-amber-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 자신이 왜 이런 끔찍한 고난을 당하는지 원인도 모른 채 깊은 나락으로 떨어졌지만, 욥은 입술로 죄를 짓거나 하나님을 탓하지 않았어요. 다 이해되지 않는 상황 속에서도 묵묵히 인내함으로 욥은 하나님 나라 백성이 가져야 할 가장 바른 자세를 온몸으로 보여주었어요.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="tue-card-4">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  오랜 침묵 끝에 하나님께서는 폭풍우 가운데 나타나셔서 사탄(리워야단)의 정체와 계교를 폭로하시고(욥 41장), 욥에게 은혜를 베푸신 분은 누구인가요? <span class="text-amber-700 font-semibold text-xs whitespace-nowrap">(욥 42:1)</span>
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 욥에게 나타나 말씀하시고 은혜를 베푸신 분은 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-tue-4" placeholder="ㅇㅎㅇ" class="qt-input w-24 text-center border-b-2 border-slate-300 bg-transparent focus:border-amber-600 focus:outline-none font-bold text-amber-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkTueAnswer(4)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span> 하나님이에요.</span>
+                  
+                  <div id="badge-tue-4" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+                <div id="explain-tue-4" class="hidden fade-solution bg-amber-50/70 border border-amber-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>설명:</strong> 욥은 폭풍우 속에 찾아오신 하나님의 말씀을 통해 모든 역경의 배후에 사탄이 있었고 하나님은 여전히 자기 편이시라는 사실을 깨달았어요. 6절에서 욥이 ‘회개’한다고 번역되기도 하지만 히브리어 원문에 따르면 ‘위로’를 받았다는 의미를 지녀요. 욥은 하나님의 신실한 사랑을 확인하며 마음의 모든 억울함과 슬픔을 씻어내는 진정한 은혜를 경험했답니다!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q5 (다짐 적기) -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="tue-card-5">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">5</span>
+              <div class="space-y-3 w-full">
+                <p class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+                  [적용] 욥은 자신의 소중한 재산과 자녀를 모두 잃는 끔찍한 재앙 속에서도 "주신 이도 여호와시요 거두신 이도 여호와시오니 여호와의 이름이 찬송을 받으실지니이다."라며 하나님을 신뢰했어요. 내 삶에 도저히 이해되지 않는 억울하고 힘든 고난이 찾아올 때 욥처럼 원망 대신 온전한 신뢰로 어떻게 나아갈지 다짐을 적어 보세요.
+                </p>
+                <textarea id="ans-tue-5" rows="3" placeholder="예: 이유 없는 고난이나 슬픔 앞에서도 불평의 말을 입 밖으로 내지 않고, 먼저 무릎 꿇고 하나님을 예배하며 '주님은 선하시다'는 믿음을 끝까지 고백하겠습니다... (3자 이상 입력)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 text-base" oninput="checkTueAnswer(5)"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 수요일 (3단계) 콘텐츠 ==================== -->
+        <div id="quiz-day-wed" class="space-y-6 hidden">
+          <div class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold uppercase">STEP 03</span>
+              <h3 class="text-base font-extrabold mt-1">3단계(수) - 킹덤 묵상 리딩</h3>
+              <p class="text-[11px] text-white/90 mt-0.5">목표: 욥의 처절한 고난과 눈물 속 예배, 그리고 예수님의 십자가 사랑을 묵상합니다.</p>
+            </div>
+            <span class="text-3xl opacity-30"><i class="fa-solid fa-feather-pointed"></i></span>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">💭</span>
+              <div class="space-y-4 w-full">
+                <h4 class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">눈물 속에서도 선하신 하나님을 찬양하는 킹덤틴즈</h4>
+                <p class="text-xs text-slate-500 leading-relaxed text-justify">수요일의 킹덤 리딩(왼쪽 칼럼)을 정독하고, 폭풍우 속에서도 나를 사랑하시는 선한 목자 하나님을 향한 나의 믿음과 고백을 정성껏 적어보세요.</p>
+                
+                <div class="space-y-1.5">
+                  <label for="ans-wed-reflex" class="text-xs font-bold text-slate-500 block">나의 다짐과 고백</label>
+                  <textarea id="ans-wed-reflex" rows="6" placeholder="내 삶에 원인을 알 수 없는 깊은 슬픔이나 억울함이 찾아오더라도, 십자가에서 가장 무고한 고난을 받으시며 사탄의 권세를 깨뜨리신 예수님을 바라보겠습니다. 선하신 하나님을 끝까지 신뢰하며 흔들림 없이 예배하는 하나님 나라 백성이 되겠습니다! (3자 이상 입력)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500 text-base" oninput="checkWedAnswer()"></textarea>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-3 rounded-xl text-xs text-purple-950 flex gap-2">
+                  <i class="fa-solid fa-circle-info text-purple-600 shrink-0 mt-0.5"></i>
+                  <span>수요일 묵상 고백을 채워주시면 다음 목요일 단계를 진행할 수 있는 리포트 카드가 활성화됩니다.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 목요일 (4단계) 콘텐츠 ==================== -->
+        <div id="quiz-day-thu" class="space-y-6 hidden">
+          <div class="bg-gradient-to-r from-indigo-700 to-blue-700 text-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold uppercase">STEP 04</span>
+              <h3 class="text-base font-extrabold mt-1">4단계(목) - 하나님 나라 관점</h3>
+              <p class="text-[11px] text-white/90 mt-0.5">목표: 25과의 핵심 주제인 ‘섭리’와 ‘신뢰’, 그리고 웨스트민스터 소교리문답 8문답을 배웁니다.</p>
+            </div>
+            <span class="text-3xl opacity-30"><i class="fa-solid fa-compass"></i></span>
+          </div>
+
+          <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex items-center gap-3">
+            <span class="text-xl shrink-0">🛡️</span>
+            <p class="text-xs text-indigo-950 font-bold leading-relaxed">25과 핵심 주제어: <span class="bg-indigo-200 px-2 py-0.5 rounded font-black text-indigo-900">‘섭리’</span> 와 <span class="bg-indigo-200 px-2 py-0.5 rounded font-black text-indigo-900">‘신뢰’</span></p>
+          </div>
+
+          <!-- Q1 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm transition-all" id="thu-card-1">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm font-bold text-slate-900 leading-relaxed">
+                  욥은 하나님과 사람 앞에 바르게 서 있던 경건한 백성이었지만, 사탄의 잔인한 공격으로 인해 까닭 없는 역경을 겪게 되었습니다. 이처럼 하나님 나라 백성에게도 뜻하지 않게 찾아오는 아픔과 시련을 무엇이라고 하나요?
+                </p>
+                <div class="bg-indigo-50/80 border border-indigo-100 rounded-xl p-3.5 text-xs text-slate-700 leading-relaxed">
+                  <p>💡 말씀 길잡이: 세상은 고난을 무조건 '죄의 결과'로만 보지만, 하나님의 섭리 안에서는 죄가 없어도 고난이 찾아올 수 있습니다. 하나님의 다스림은 고난 속에서도 우리가 상상할 수 없는 선한 뜻을 이루시는 방식으로 나타납니다.</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 하나님 나라 백성도 죄와 상관없이 억울하고 극심한 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-thu-1" placeholder="ㄱㄴ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkThuAnswer(1)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>을 만날 수 있습니다.</span>
+                  
+                  <div id="badge-thu-1" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm transition-all" id="thu-card-2">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm font-bold text-slate-900 leading-relaxed">
+                  욥은 전 재산과 열 자녀를 모두 잃는 끔찍한 재앙 앞에서도 "주신 이도 여호와시요 거두신 이도 여호와시오니"라고 고백했습니다. 다 이해되지 않는 상황 속에서도 욥이 끝까지 붙잡았던 하나님을 향한 바른 태도는 무엇인가요?
+                </p>
+                <div class="bg-indigo-50/80 border border-indigo-100 rounded-xl p-3.5 text-xs text-slate-700 leading-relaxed">
+                  <p>💡 말씀 길잡이: 우리의 신앙은 단지 복을 받기 위한 거래가 아니라, 하나님과의 인격적인 관계에 기초합니다. 모든 만물을 계획하시고 주관하시는 하나님이 나를 마지막에 '최상의 길'로 인도하실 것을 믿는 자세가 필요합니다.</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 온 세상을 완벽하게 다스리시는 하나님의 주권과 선하신 통치를 온전히 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-thu-2" placeholder="ㅅㄹ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkThuAnswer(2)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>하는 것입니다.</span>
+                  
+                  <div id="badge-thu-2" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm transition-all" id="thu-card-3">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm font-bold text-slate-900 leading-relaxed">
+                  오랜 침묵 끝에 하나님께서는 폭풍우 가운데 나타나셔서 사탄(리워야단)의 정체를 폭로하시고 심판을 선포하셨습니다. 고난 가운데 있던 욥이, 하나님이 여전히 내 편이심을 깨닫고 누리게 된 진정한 은혜는 무엇인가요?
+                </p>
+                <div class="bg-indigo-50/80 border border-indigo-100 rounded-xl p-3.5 text-xs text-slate-700 leading-relaxed">
+                  <p>💡 말씀 길잡이: 히브리어 원문을 보면 욥이 마지막에 잘못을 빌며 '회개'한 것이 아니라, 하나님의 말씀을 듣고 깊은 '위로'를 얻었다고 나옵니다. 하나님은 친히 찾아오셔서 눈물을 닦아주시는 분입니다.</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 하나님이 여전히 나를 사랑하시며 내 삶을 붙잡고 계심을 확인하고 얻은 영혼의 진짜 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-thu-3" placeholder="ㅇㄹ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkThuAnswer(3)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>입니다.</span>
+                  
+                  <div id="badge-thu-3" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm transition-all" id="thu-card-4">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm font-bold text-slate-900 leading-relaxed">
+                  욥은 아무것도 모른 채 인내해야 했지만, 오늘날 우리는 예수 그리스도의 십자가 사건을 통해 악의 세력이 이미 패배했음을 알고 있습니다. 욥의 이야기를 완성하신 예수님의 십자가는 하나님의 다스림이 어떻게 완성됨을 보여주나요?
+                </p>
+                <div class="bg-indigo-50/80 border border-indigo-100 rounded-xl p-3.5 text-xs text-slate-700 leading-relaxed">
+                  <p>💡 말씀 길잡이: 예수님은 가장 무고한 고난을 받으셨지만, 십자가 죽음과 부활을 통해 성도를 참소하는 사탄의 머리를 완전히 깨뜨리시고 승리하셨습니다.</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 예수님은 가장 무고한 고난을 받으셨지만, 십자가 죽음을 통해 고난 배후에 있는 사탄의 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-thu-4" placeholder="ㅁㄹ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkThuAnswer(4)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>를 완벽하게 깨뜨리셨습니다.</span>
+                  
+                  <div id="badge-thu-4" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q5 (소교리문답 8문 빈칸 완성) -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm transition-all" id="thu-card-5">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">5</span>
+              <div class="space-y-3 w-full break-keep">
+                <p class="text-sm font-bold text-slate-900 leading-relaxed">
+                  웨스트민스터 소교리문답 8문답을 읽고, 이해할 수 없는 고난 중에도 하나님의 계획을 믿고 끝까지 신뢰해야 하는 이유에 대해 알맞은 단어를 채워보세요.
+                </p>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs text-slate-800 leading-relaxed">
+                  <p class="font-bold text-indigo-900 border-b border-slate-200 pb-1 mb-1.5"><웨스트민스터 소교리문답> 8문</p>
+                  <p><strong>문: 하나님께서 자기의 작정들을 어떻게 이루십니까?</strong></p>
+                  <p class="mt-1"><strong>답: 하나님께서 창조와 섭리의 사역들로 자기의 작정들을 이루십니다.</strong></p>
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs md:text-sm font-semibold text-slate-700 leading-relaxed text-justify">
+                  <span>답: 인간의 지혜로는 다 알 수 없지만, 하나님께서 모든 만물을 지으시고 다스리시는 창조와 </span>
+                  <span class="inline-flex items-center whitespace-nowrap align-baseline">
+                    <span class="text-slate-400 font-bold">(</span>
+                    <input type="text" id="ans-thu-5" placeholder="ㅅㄹ" class="qt-input w-20 text-center border-b-2 border-slate-300 bg-transparent focus:border-indigo-600 focus:outline-none font-bold text-indigo-950 text-xs md:text-sm py-0 h-6 align-baseline mx-0.5" oninput="checkThuAnswer(5)">
+                    <span class="text-slate-400 font-bold">)</span>
+                  </span>
+                  <span>의 사역을 통해 그분의 선하신 계획을 반드시 이루시기 때문입니다.</span>
+                  
+                  <div id="badge-thu-5" class="hidden items-center gap-1 text-emerald-600 font-bold text-xs ml-auto mt-2 bg-emerald-50 px-2 py-1 rounded-lg w-fit">
+                    <i class="fa-solid fa-circle-check"></i> 정답 확인됨
+                  </div>
+                </div>
+
+                <div id="explain-thu-5" class="hidden fade-solution bg-indigo-50/70 border border-indigo-100 rounded-xl p-4 mt-2">
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    <strong>해설:</strong> 하나님의 작정은 하나님의 뜻에 따라 정하신 영원한 목적이며, 우리가 고난을 겪을 때도 모든 상황은 하나님의 지배 아래에 있습니다. 비록 세상에 죄와 고통이 있지만, 하나님은 창조와 섭리의 사역으로 그분의 작정을 한 치의 오차도 없이 이루어 가십니다. 그러므로 우리는 역경 속에서도 선하신 하나님의 주권을 온전히 믿고 인내해야 합니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 금요일 (5단계) 콘텐츠 ==================== -->
+        <div id="quiz-day-fri" class="space-y-6 hidden">
+          <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold uppercase">STEP 05</span>
+              <h3 class="text-base font-extrabold mt-1">5단계(금) - 킹덤 최종 퀴즈</h3>
+              <p class="text-[11px] text-white/90 mt-0.5">목표: 25과 욥기의 핵심 내용과 고난 중 선하신 하나님의 섭리를 최종 점검합니다.</p>
+            </div>
+            <span class="text-3xl opacity-30"><i class="fa-solid fa-trophy"></i></span>
+          </div>
+
+          <!-- Q1 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="fri-card-1">
+            <span class="text-xs font-bold text-slate-400">질문 1</span>
+            <h4 class="text-sm md:text-base font-medium text-slate-950 mt-1">하나님께 큰 칭찬을 받았던 신실한 성도 욥에게 끔찍한 재앙이 찾아온 것을 보면, 하나님 나라 백성도 죄와 상관없이 억울하게 고난을 받을 수 있음을 알 수 있습니다. (O, X)</h4>
+            
+            <div class="grid grid-cols-2 gap-3 mt-4">
+              <button onclick="selectFriQuiz(1, 1)" id="fri-btn-1-1" class="border-2 border-slate-200 rounded-2xl p-4 text-slate-700 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex flex-col items-center gap-2">
+                <span class="text-2xl text-blue-600">O</span>
+                <span class="text-xs">그렇다</span>
+              </button>
+              <button onclick="selectFriQuiz(1, 2)" id="fri-btn-1-2" class="border-2 border-slate-200 rounded-2xl p-4 text-slate-700 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex flex-col items-center gap-2">
+                <span class="text-2xl text-red-600">X</span>
+                <span class="text-xs">아니다</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="fri-card-2">
+            <span class="text-xs font-bold text-slate-400">질문 2</span>
+            <h4 class="text-sm md:text-base font-medium text-slate-950 mt-1">온전하고 정직했던 욥에게 어느 날 갑자기 고난이 닥쳐왔어요. 욥에게 끔찍한 고난이 찾아온 이유는 무엇일까요?</h4>
+            
+            <div class="grid grid-cols-1 gap-3 mt-4">
+              <button onclick="selectFriQuiz(2, 1)" id="fri-btn-2-1" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">①</div>
+                <p class="text-xs text-slate-700">욥이 하나님 몰래 큰 죄를 지었기 때문이에요.</p>
+              </button>
+              <button onclick="selectFriQuiz(2, 2)" id="fri-btn-2-2" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">②</div>
+                <p class="text-xs text-slate-700">욥이 하나님께 매일 드렸던 예배와 번제를 귀찮아서 빼먹었기 때문이에요.</p>
+              </button>
+              <button onclick="selectFriQuiz(2, 3)" id="fri-btn-2-3" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">③</div>
+                <p class="text-xs text-slate-700">참소자 사탄이 욥을 하나님 앞에서 악하게 고발했기 때문이에요.</p>
+              </button>
+              <button onclick="selectFriQuiz(2, 4)" id="fri-btn-2-4" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">④</div>
+                <p class="text-xs text-slate-700">욥의 열 자녀가 부모의 말을 듣지 않고 매일 파티를 열고 악하게 행동했기 때문이에요.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="fri-card-3">
+            <span class="text-xs font-bold text-slate-400">질문 3</span>
+            <h4 class="text-sm md:text-base font-medium text-slate-950 mt-1">뜻하지 않은 고난으로 소와 나귀, 양과 낙타 같은 모든 재산과 사랑하는 열 자녀를 순식간에 다 잃었을 때, 욥이 보인 첫 번째 반응은 무엇인가요?</h4>
+            
+            <div class="grid grid-cols-1 gap-3 mt-4">
+              <button onclick="selectFriQuiz(3, 1)" id="fri-btn-3-1" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">①</div>
+                <p class="text-xs text-slate-700">씩씩거리며 하나님을 향해 불평과 원망을 쏟아냈어요.</p>
+              </button>
+              <button onclick="selectFriQuiz(3, 2)" id="fri-btn-3-2" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">②</div>
+                <p class="text-xs text-slate-700">친구들에게 연락해 억울한 사정을 하소연하고 화를 냈어요.</p>
+              </button>
+              <button onclick="selectFriQuiz(3, 3)" id="fri-btn-3-3" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">③</div>
+                <p class="text-xs text-slate-700">겉옷을 찢고 머리털을 밀며 슬퍼했지만, 오히려 땅에 엎드려 '예배'했어요.</p>
+              </button>
+              <button onclick="selectFriQuiz(3, 4)" id="fri-btn-3-4" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">④</div>
+                <p class="text-xs text-slate-700">내 인생은 이제 끝났다며 방 안에만 숨어 밥도 먹지 않고 소리만 질렀어요.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="fri-card-4">
+            <span class="text-xs font-bold text-slate-400">질문 4</span>
+            <h4 class="text-sm md:text-base font-medium text-slate-950 mt-1">오랜 침묵 끝에 하나님께서는 폭풍우 가운데 나타나셔서 욥에게 무슨 말씀을 전하셨나요?</h4>
+            
+            <div class="grid grid-cols-1 gap-3 mt-4">
+              <button onclick="selectFriQuiz(4, 1)" id="fri-btn-4-1" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">①</div>
+                <p class="text-xs text-slate-700">하나님만 아시는 욥의 숨겨진 죄를 폭로하셨어요.</p>
+              </button>
+              <button onclick="selectFriQuiz(4, 2)" id="fri-btn-4-2" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">②</div>
+                <p class="text-xs text-slate-700">욥이 왜 고난당했는지 알려주시며, 처참한 처지 속에서도 큰 '위로'를 얻게 하셨어요.</p>
+              </button>
+              <button onclick="selectFriQuiz(4, 3)" id="fri-btn-4-3" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">③</div>
+                <p class="text-xs text-slate-700">다른 나라로 이사해서 새 출발을 하라고 말씀하시며 이삿짐 비용을 주셨어요.</p>
+              </button>
+              <button onclick="selectFriQuiz(4, 4)" id="fri-btn-4-4" class="text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full">
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">④</div>
+                <p class="text-xs text-slate-700">오늘 날씨가 나쁘다며 욥과 근황 토크를 하셨어요.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" id="fri-card-5">
+            <span class="text-xs font-bold text-slate-400">질문 5 (상황형 마음 조언)</span>
+            <div class="bg-indigo-50 border border-indigo-150 p-4 rounded-xl mt-1.5 space-y-2">
+              <p class="text-xs text-indigo-950 font-medium leading-relaxed">
+                💬 같은 교회에 다니는 친구 '지우'가 요즘 가정에 갑작스러운 경제적 어려움이 생기고 안 좋은 일들이 겹치자 눈물을 흘리며 이렇게 말합니다.<br><br>
+                <span class="italic text-slate-700">“나는 매주 예배도 잘 드리고 기도도 열심히 했는데, 왜 내게 이런 일이 일어나는 걸까? 내가 무슨 큰 잘못이나 죄를 지어서 하나님이 벌을 주시는 걸까?”</span>
+              </p>
+            </div>
+
+            <p class="text-xs text-slate-500 mt-3 font-semibold">고난 중에도 하나님을 신뢰한 욥의 이야기를 배운 내가 지우에게 어떤 따뜻한 위로의 말을 전해줄 수 있을까요? (지우의 어려움이 죄 때문이 아님을 욥의 사례로 설명하고, 하나님의 선하신 뜻을 기억하도록 적어보세요)</p>
+
+            <div class="space-y-2 mt-3">
+              <textarea id="ans-fri-5" rows="4" placeholder="예: 지우야, 많이 힘들지? 하지만 성경 속 욥을 보면 하나님께 큰 칭찬을 받은 의인인데도 큰 고난을 겪었어. 그러니까 지금 겪는 일이 네 잘못이나 죄 때문에 벌을 받는 게 결코 아니야! 당장은 이유를 알 수 없더라도 선하신 하나님은 여전히 너를 사랑하시니, 끝까지 주님을 신뢰하고 함께 기도하자! (3자 이상 입력)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base" oninput="checkFriSubjective()"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- General Completion Action Area -->
+      <div id="bottom-complete-bar" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col gap-4 items-center justify-between text-center md:text-left md:flex-row">
+        <div>
+          <h3 id="btn-complete-title" class="font-bold text-slate-900 text-sm md:text-base">월요일 큐티를 다 채우셨나요?</h3>
+          <p id="btn-complete-desc" class="text-[11px] text-slate-500 mt-1">의인에게 닥친 고난과 신뢰에 대한 관찰 해석 리포트를 완성해 보세요.</p>
+        </div>
+        <button onclick="generateReport()" class="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold px-5 py-3 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-xs md:text-sm">
+          <i class="fa-solid fa-file-image"></i> <span id="btn-complete-text">월요일 결과 리포트 만들기</span>
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- CAPTURE REPORT MODAL -->
+  <div id="report-modal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto hidden">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-5 md:p-8 space-y-5 relative shadow-2xl my-8">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors">
+        <i class="fa-solid fa-circle-xmark text-2xl"></i>
+      </button>
+
+      <!-- The capturing zone -->
+      <div id="capture-zone" class="bg-gradient-to-br from-indigo-50 via-purple-50 to-amber-50 p-5 md:p-8 rounded-2xl border border-indigo-200/70 shadow-inner relative overflow-hidden">
+        
+        <!-- Decorative Watermark Background -->
+        <div class="absolute -right-16 -bottom-16 text-indigo-200/20 pointer-events-none">
+          <i class="fa-solid fa-shield-heart text-[240px] transform -rotate-12"></i>
+        </div>
+
+        <div class="relative space-y-4">
+          <!-- Report Header -->
+          <div class="flex justify-between items-start border-b border-indigo-200 pb-3">
+            <div>
+              <span id="rep-stage-badge" class="bg-indigo-600 text-white text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">월요일 큐티 완료</span>
+              <h2 id="rep-title" class="text-base md:text-xl font-black text-slate-900 mt-1">1단계: 의인에게 닥친 억울한 고난</h2>
+              <p class="text-[11px] text-slate-600 mt-0.5">욥기 성경 묵상 리포트</p>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="text-xs font-bold text-indigo-900 bg-indigo-100/90 px-2.5 py-0.5 rounded">킹덤틴즈 25과</span>
+              <p class="text-[9px] text-slate-400 mt-1" id="report-date"></p>
+            </div>
+          </div>
+
+          <!-- Dynamic Answers Container inside Capture Card -->
+          <div id="rep-answers-list" class="space-y-3">
+            <!-- Dynamic list items will be injected via JS -->
+          </div>
+
+          <!-- Report Footer Statement -->
+          <div class="text-center pt-3 border-t border-indigo-200">
+            <p class="text-[11px] text-slate-500 italic">“주신 이도 여호와시요 거두신 이도 여호와시오니 여호와의 이름이 찬송을 받으실지니이다” (욥 1:21)</p>
+            <p class="text-[9px] text-indigo-900 font-bold mt-1">어떤 폭풍우 속에서도 선하신 하나님을 신뢰하며 흔들림 없이 예배하겠습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-end pt-2">
+        <button onclick="shareAppUrl()" class="w-full sm:w-auto bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 font-bold px-5 py-2 rounded-xl transition text-xs flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-link"></i> 초대 주소 복사
+        </button>
+        <button onclick="closeModal()" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-xl transition text-xs">
+          조금 더 수정하기
+        </button>
+        <button onclick="downloadReportImage()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2 rounded-xl transition text-xs flex items-center justify-center gap-2 shadow-md">
+          <i class="fa-solid fa-download"></i> 리포트 캡처 이미지 저장
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Reset Modal -->
+  <div id="reset-confirm-modal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-4 text-center shadow-2xl border border-slate-100">
+      <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center mx-auto text-xl">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div class="space-y-1">
+        <h3 class="font-bold text-slate-900 text-base">25과 진도 초기화</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">작성한 답변과 잠금 해제 상태가 모두 초기화됩니다. 처음부터 다시 도전할까요?</p>
+      </div>
+      <div class="flex gap-2.5 pt-2">
+        <button onclick="closeResetModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 rounded-xl text-xs transition">취소</button>
+        <button onclick="confirmResetProgress()" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-xl text-xs transition">전체 초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Alert Toast Box -->
+  <div id="alert-box" class="fixed bottom-6 right-6 left-6 sm:left-auto bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none max-w-sm">
+    <span class="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-[10px]"></i>
+    </span>
+    <span id="alert-msg" class="text-xs font-semibold">알림 메시지</span>
+  </div>
+
+  <script>
+    const days = ['mon', 'tue', 'wed', 'thu', 'fri'];
+    let currentDay = 'mon';
+    let currentFilteredChapter = 'all';
+
+    function safeGetStorage(key, defaultValue) {
+      try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : defaultValue;
+      } catch(e) {
+        return defaultValue;
+      }
+    }
+
+    function safeSetStorage(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch(e) {
+        console.warn('LocalStorage save failed:', e);
+      }
+    }
+
+    // 25과 요일별 잠금 해제 상태 관리 (월요일 기본 해제)
+    let unlockedDays = safeGetStorage('kt25_unlocked_days', {
+      mon: true,
+      tue: false,
+      wed: false,
+      thu: false,
+      fri: false
+    });
+
+    // 25과 정답 체크 딕셔너리
+    const WEEKLY_ANSWERS = {
+      mon: {
+        1: ["욥"],
+        2: ["사탄", "사단"],
+        3: {
+          c1: ["소"],
+          c2: ["암나귀", "나귀"],
+          c3: ["양"],
+          c4: ["낙타"]
+        },
+        4: ["자녀들", "자녀", "아이들", "자식들"]
+      },
+      tue: {
+        1: ["예배", "예배를"],
+        2: ["욥"],
+        3: ["원망"],
+        4: ["여호와", "여호와 하나님", "하나님"]
+      },
+      thu: {
+        1: ["고난", "환난", "시련"],
+        2: ["신뢰", "신뢰하"],
+        3: ["위로"],
+        4: ["머리", "머리를"],
+        5: ["섭리", "섭리의"]
+      },
+      fri: {
+        1: 1, // ① O (의인도 죄와 상관없이 고난받을 수 있음)
+        2: 3, // ③ 참소자 사탄이 욥을 하나님 앞에서 악하게 고발했기 때문
+        3: 3, // ③ 땅에 엎드려 '예배'했어요
+        4: 2  // ② 욥이 왜 고난당했는지 알려주시며 큰 '위로'를 얻게 하셨어요
+      }
+    };
+
+    let daySolvedState = safeGetStorage('kt25_day_solved_state', {
+      mon: { 1: false, 2: false, 3: false, 4: false, 5: false },
+      tue: { 1: false, 2: false, 3: false, 4: false, 5: false },
+      wed: { reflex: false },
+      thu: { 1: false, 2: false, 3: false, 4: false, 5: false },
+      fri: { 1: false, 2: false, 3: false, 4: false, 5: false }
+    });
+
+    let friSelectedChoices = safeGetStorage('kt25_fri_selected', { 1: null, 2: null, 3: null, 4: null });
+
+    // ==================== 욥기 성경 본문 전체 데이터 (1장 전문 및 42장 전문) ====================
+    const JOB_BIBLE_CHAPTERS = {
+      1: {
+        title: "제 1 장: 욥의 경건과 시험, 처절한 고난과 예배 (1-2단계 본문)",
+        verses: [
+          { v: 1, text: "우스 땅에 욥이라 불리는 사람이 있었는데 그 사람은 온전하고 정직하여 하나님을 경외하며 악에서 떠난 자더라" },
+          { v: 2, text: "그에게 아들 일곱과 딸 셋이 태어나니라" },
+          { v: 3, text: "그의 소유물은 양이 칠천 마리요 낙타가 삼천 마리요 소가 오백 겨리요 암나귀가 오백 마리이며 종도 많이 있었으니 이 사람은 동방 사람 중에 가장 훌륭한 자라" },
+          { v: 4, text: "그의 아들들이 자기 생일에 각각 자기의 집에서 잔치를 베풀고 그의 누이 세 명도 청하여 함께 먹고 마시더라" },
+          { v: 5, text: "그들이 차례대로 잔치를 끝내면 욥이 그들을 불러다가 성결하게 하되 아침에 일찍이 일어나서 그들의 명수대로 번제를 드렸으니 이는 욥이 말하기를 혹시 내 아들들이 죄를 범하여 마음으로 하나님을 욕되게 하였을까 함이라 욥의 행위가 항상 이러하였더라" },
+          { v: 6, text: "하루는 하나님의 아들들이 와서 여호와 앞에 섰고 사탄도 그들 가운데에 온지라" },
+          { v: 7, text: "여호와께서 사탄에게 이르시되 네가 어디서 왔느냐 사탄이 여호와께 대답하여 이르되 땅을 두루 돌아 여기저기 다녀왔나이다" },
+          { v: 8, text: "여호와께서 사탄에게 이르시되 네가 내 종 욥을 주의하여 보았느냐 그와 같이 온전하고 정직하여 하나님을 경외하며 악에서 떠난 자는 세상에 없느니라" },
+          { v: 9, text: "사탄이 여호와께 대답하여 이르되 욥이 어찌 까닭 없이 하나님을 경외하리이까" },
+          { v: 10, text: "주께서 그와 그의 집과 그의 모든 소유물을 울타리로 두르심 때문이 아니니이까 주께서 그의 손으로 하는 바를 복되게 하사 그의 소유물이 땅에 넘치게 하셨음이니이다" },
+          { v: 11, text: "이제 주의 손을 펴서 그의 모든 소유물을 치소서 그리하시면 틀림없이 주를 향하여 욕하지 않겠나이까" },
+          { v: 12, text: "여호와께서 사탄에게 이르시되 내가 그의 소유물을 다 네 손에 맡기노라 다만 그의 몸에는 네 손을 대지 말지니라 사탄이 곧 여호와 앞에서 물러가니라" },
+          { v: 13, text: "하루는 욥의 자녀들이 그 맏아들의 집에서 음식을 먹으며 포도주를 마실 때에" },
+          { v: 14, text: "사환이 욥에게 와서 아뢰되 소는 밭을 갈고 나귀는 그 곁에서 풀을 먹는데" },
+          { v: 15, text: "스바 사람이 갑자기 이르러 그것들을 빼앗고 칼로 종들을 죽였나이다 나만 홀로 피하였으므로 주인께 아뢰러 왔나이다" },
+          { v: 16, text: "그가 아직 말하는 동안에 또 한 사람이 와서 아뢰되 하나님의 불이 하늘에서 떨어져 양과 종들을 살라 버렸나이다 나만 홀로 피하였으므로 주인께 아뢰러 왔나이다" },
+          { v: 17, text: "그가 아직 말하는 동안에 또 한 사람이 와서 아뢰되 갈대아 사람이 세 무리를 지어 갑자기 낙타에게 달려들어 그것을 빼앗으며 칼로 종들을 죽였나이다 나만 홀로 피하였으므로 주인께 아뢰러 왔나이다" },
+          { v: 18, text: "그가 아직 말하는 동안에 또 한 사람이 와서 아뢰되 주인의 자녀들이 그들의 맏아들의 집에서 음식을 먹으며 포도주를 마시는데" },
+          { v: 19, text: "거친 들에서 큰 바람이 와서 집 네 모퉁이를 치매 그 청년들 위에 무너지므로 그들이 죽었나이다 나만 홀로 피하였으므로 주인께 아뢰러 왔나이다 한지라" },
+          { v: 20, text: "욥이 일어나 겉옷을 찢고 머리털을 밀고 땅에 엎드려 예배하며" },
+          { v: 21, text: "이르되 내가 모태에서 알몸으로 나왔사온즉 또한 알몸이 그리로 돌아가올지라 주신 이도 여호와시요 거두신 이도 여호와시오니 여호와의 이름이 찬송을 받으실지니이다 하고" },
+          { v: 22, text: "이 모든 일에 욥이 범죄하지 아니하고 하나님을 향하여 원망하지 아니하니라" }
+        ]
+      },
+      42: {
+        title: "제 42 장: 욥의 고백과 하나님의 위로 및 회복 (2·4단계 본문)",
+        verses: [
+          { v: 1, text: "욥이 여호와께 대답하여 이르되" },
+          { v: 2, text: "주께서는 못 하실 일이 없사오며 무슨 계획이든지 못 이루실 것이 없는 줄 아오니" },
+          { v: 3, text: "무지한 말로 이치를 가리는 자가 누구니이까 나는 깨닫지도 못한 일을 말하였고 스스로 알 수도 없고 헤아리기도 어려운 일을 말하였나이다" },
+          { v: 4, text: "내가 말하겠사오니 주는 들으시고 내가 주께 묻겠사오니 주여 내게 알게 하옵소서" },
+          { v: 5, text: "내가 주께 대하여 귀로 듣기만 하였사오나 이제는 눈으로 주를 뵈옵나이다" },
+          { v: 6, text: "그러므로 내가 스스로 거두어들이고 티끌과 재 가운데에서 회개(위로를 받나이다)하나이다" },
+          { v: 7, text: "여호와께서 욥에게 이 말씀을 하신 후에 여호와께서 데만 사람 엘리바스에게 이르시되 내가 너와 네 두 친구에게 노하나니 이는 너희가 나를 가리켜 말한 것이 내 종 욥의 말 같이 옳지 못함이니라" },
+          { v: 8, text: "그런즉 너희는 수소 일곱과 숫양 일곱을 가지고 내 종 욥에게 가서 너희를 위하여 번제를 드리라 내 종 욥이 너희를 위하여 기도할 것인즉 내가 그를 기쁘게 받으리니 너희가 우매한 만큼 너희에게 갚지 아니하리라 이는 너희가 나를 가리켜 말한 것이 내 종 욥의 말 같이 옳지 못함이라" },
+          { v: 9, text: "이에 데만 사람 엘리바스와 수아 사람 빌닷과 나아마 사람 소발이 가서 여호와께서 자기들에게 명령하신 대로 행하매 여호와께서 욥을 기쁘게 받으셨더라" },
+          { v: 10, text: "욥이 그의 친구들을 위하여 기도할 때 여호와께서 욥의 곤경을 돌이키시고 여호와께서 욥에게 이전 모든 소유보다 갑절이나 주신지라" },
+          { v: 11, text: "이에 그의 모든 형제와 자매와 이전에 알던 이들이 다 와서 그의 집에서 그와 함께 음식을 먹고 여호와께서 그에게 내리신 모든 재앙에 관하여 그를 위하여 슬퍼하며 위로하고 각각 케시타 하나씩과 금 고리 하나씩을 주었더라" },
+          { v: 12, text: "여호와께서 욥의 말년에 욥에게 처음보다 더 복을 주시니 그가 양 만 사천과 낙타 육천과 소 천 겨리와 암나귀 천을 두었고" },
+          { v: 13, text: "또 아들 일곱과 딸 셋을 두었으며" },
+          { v: 14, text: "그가 첫째 딸은 여미마라 이름하였고 둘째 딸은 긋시아라 이름하였고 셋째 딸은 게렌합북이라 이름하였으니" },
+          { v: 15, text: "모든 땅에서 욥의 딸들처럼 아리따운 여자가 없었더라 그들의 아버지가 그들에게 그들의 오라비들처럼 기업을 주었더라" },
+          { v: 16, text: "그 후에 욥이 백사십 년을 살며 아들과 손자 사 대를 보았고" },
+          { v: 17, text: "욥이 늙고 나이가 차서 죽었더라" }
+        ]
+      }
+    };
+
+    // 요일별 장 네비게이션 렌더링
+    function renderChapterNav(day) {
+      const navContainer = document.getElementById('bible-chapter-nav');
+      if (!navContainer) return;
+
+      let chapters = [];
+      let labelAll = "";
+      if (day === 'mon') {
+        chapters = [1];
+        labelAll = "욥기 1장 전체";
+      } else if (day === 'tue' || day === 'thu') {
+        chapters = [1, 42];
+        labelAll = "전체 (1장 & 42장)";
+      } else {
+        chapters = [1];
+        labelAll = "욥기 1장";
+      }
+
+      if (currentFilteredChapter !== 'all' && !chapters.includes(parseInt(currentFilteredChapter))) {
+        currentFilteredChapter = 'all';
+      }
+
+      let html = `<span class="text-[11px] font-bold text-slate-400 shrink-0 mr-1">장 이동:</span>`;
+      const isAllActive = (currentFilteredChapter === 'all');
+      html += `<button onclick="filterBibleChapter('all')" class="px-2 py-0.5 text-xs font-bold rounded-lg ${isAllActive ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'} shrink-0 transition">${labelAll}</button>`;
+
+      chapters.forEach(ch => {
+        const isActive = (currentFilteredChapter == ch);
+        html += `<button onclick="filterBibleChapter(${ch})" class="px-2 py-0.5 text-xs font-medium rounded-lg ${isActive ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'} shrink-0 transition">${ch}장</button>`;
+      });
+
+      navContainer.innerHTML = html;
+    }
+
+    // 욥기 성경 본문 렌더링 (전체 말씀 포함)
+    function renderJobBible(filter = 'all') {
+      const container = document.getElementById('left-content-bible');
+      if (!container) return;
+
+      const allowed = (currentDay === 'mon') ? [1] : [1, 42];
+      const subTitle = (currentDay === 'mon') ? "욥기 1장 전체 성경 말씀 (개역개정)" : "욥기 1장 & 42장 성경 말씀 (개역개정)";
+
+      let html = `
+        <div class="bg-indigo-50/80 border-l-4 border-indigo-600 p-3 rounded-r-xl mb-3">
+          <p class="text-xs font-bold text-indigo-950">📖 ${subTitle}</p>
+          <p class="text-[11px] text-indigo-900 mt-0.5">상단 장 이동 버튼을 누르면 원하는 장을 집중해서 보거나 전체를 이어서 읽을 수 있습니다.</p>
+        </div>
+      `;
+
+      let chaptersToRender = (filter === 'all') ? allowed : [parseInt(filter)];
+      if (filter !== 'all' && !allowed.includes(parseInt(filter))) {
+        chaptersToRender = allowed;
+      }
+
+      html += `<div class="space-y-6 pr-1 max-h-[560px] overflow-y-auto border border-slate-200/80 p-3.5 rounded-xl bg-slate-50/40 text-[13px] md:text-[14px] leading-relaxed">`;
+
+      chaptersToRender.forEach(ch => {
+        const cData = JOB_BIBLE_CHAPTERS[ch];
+        if (!cData) return;
+
+        let badgeColor = (ch === 1) ? 'bg-indigo-600 text-white' : 'bg-amber-600 text-white';
+
+        html += `
+          <div id="bible-section-ch${ch}" class="border-b border-slate-200 pb-3 pt-2">
+            <div class="flex items-center justify-between pb-1 mb-2 border-b border-slate-150">
+              <span class="text-xs font-black ${badgeColor} px-2 py-0.5 rounded-md">${cData.title}</span>
+              <span class="text-[10px] text-slate-400 font-bold">${cData.verses.length}절 전체</span>
+            </div>
+            <div class="space-y-2">
+        `;
+
+        cData.verses.forEach(v => {
+          let verseTag = `${ch}:${v.v}`;
+          html += `
+            <p class="text-slate-800">
+              <strong class="text-indigo-800 bg-indigo-100/70 text-[11px] px-1.5 py-0.5 rounded mr-1 font-bold shrink-0">${verseTag}</strong>
+              <span>${v.text}</span>
+            </p>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      container.innerHTML = html;
+    }
+
+    function filterBibleChapter(chapter) {
+      currentFilteredChapter = chapter;
+      renderChapterNav(currentDay);
+      renderJobBible(chapter);
+    }
+
+    function updateLeftBibleContent(day) {
+      const leftPanelTitle = document.getElementById('left-panel-title');
+      const leftPanelMeta = document.getElementById('left-panel-meta');
+      const chapterNav = document.getElementById('bible-chapter-nav');
+      if (chapterNav) chapterNav.classList.remove('hidden');
+
+      renderChapterNav(day);
+
+      if (day === 'mon') {
+        if (leftPanelTitle) leftPanelTitle.innerHTML = `<i class="fa-solid fa-scroll text-indigo-600"></i> 성경 말씀 읽기`;
+        if (leftPanelMeta) leftPanelMeta.textContent = "욥기 1장 전체";
+        renderJobBible(currentFilteredChapter);
+      } else if (day === 'tue') {
+        if (leftPanelTitle) leftPanelTitle.innerHTML = `<i class="fa-solid fa-scroll text-amber-600"></i> 성경 말씀 읽기`;
+        if (leftPanelMeta) leftPanelMeta.textContent = "욥기 1장 & 42장";
+        renderJobBible(currentFilteredChapter);
+      } else if (day === 'thu') {
+        if (leftPanelTitle) leftPanelTitle.innerHTML = `<i class="fa-solid fa-scroll text-indigo-600"></i> 말씀 & 소교리문답`;
+        if (leftPanelMeta) leftPanelMeta.textContent = "욥기 1장, 42장 & 소교리문답 8문";
+        renderJobBible(currentFilteredChapter);
+        
+        const container = document.getElementById('left-content-bible');
+        if (container) {
+          const cateHtml = `
+            <div class="p-4 bg-indigo-50/80 border border-indigo-200 rounded-xl space-y-2 mt-4 text-justify">
+              <div class="flex items-center gap-1.5 text-indigo-950 font-bold text-xs border-b border-indigo-200 pb-1.5">
+                <i class="fa-solid fa-book-bible text-indigo-700"></i> 웨스트민스터 소교리문답 8문
+              </div>
+              <p class="text-xs text-slate-850 font-semibold bg-white p-3 rounded-lg border border-indigo-100 shadow-sm leading-relaxed text-slate-800">
+                <strong>문: 하나님께서 자기의 작정들을 어떻게 이루십니까?</strong><br><br>
+                <strong>답:</strong> 하나님께서 창조와 섭리의 사역들로 자기의 작정들을 이루십니다.
+              </p>
+            </div>
+          `;
+          container.insertAdjacentHTML('beforeend', cateHtml);
+        }
+      }
+    }
+
+    function switchDay(day) {
+      if (!unlockedDays[day]) {
+        const dayNames = { mon: '월요일(1단계)', tue: '화요일(2단계)', wed: '수요일(3단계)', thu: '목요일(4단계)', fri: '금요일(5단계)' };
+        showNotification(`🔒 이전 단계의 큐티를 작성하고 [결과 리포트 카드]를 생성하셔야 ${dayNames[day]} 과정이 잠금 해제됩니다!`, false);
+        return;
+      }
+
+      currentDay = day;
+      currentFilteredChapter = 'all'; // 탭 전환 시 전체로 초기화
+      renderDayTabs();
+
+      const badges = {
+        mon: "월요일 진행 중",
+        tue: "화요일 진행 중",
+        wed: "수요일 진행 중",
+        thu: "목요일 진행 중",
+        fri: "금요일 진행 중"
+      };
+      const dayBadge = document.getElementById('day-badge-name');
+      if (dayBadge) dayBadge.textContent = badges[day];
+
+      const completeTitles = {
+        mon: "월요일 큐티를 다 채우셨나요?",
+        tue: "화요일 큐티를 다 채우셨나요?",
+        wed: "수요일 묵상을 다 채우셨나요?",
+        thu: "목요일 학습을 다 채우셨나요?",
+        fri: "금요일 퀴즈를 완료하셨나요?"
+      };
+      const completeDescs = {
+        mon: "의인에게 닥친 고난과 신뢰에 대한 관찰 해석 리포트를 완성해 보세요.",
+        tue: "원망 대신 드린 예배와 하나님의 위로 리포트를 완성해 보세요.",
+        wed: "폭풍 속에서도 선하신 하나님을 신뢰하겠다는 나의 다짐 리포트를 만들어 보세요.",
+        thu: "하나님의 선하신 '섭리'와 예수 그리스도의 십자가 승리 리포트를 소장하세요.",
+        fri: "25과 욥기 전체 학습을 수료하셨습니다! 성취 인증 카드를 다운로드하세요."
+      };
+      const completeBtnText = {
+        mon: "월요일 결과 리포트 만들기",
+        tue: "화요일 결과 리포트 만들기",
+        wed: "수요일 고백 리포트 만들기",
+        thu: "목요일 결과 리포트 만들기",
+        fri: "금요일 최종 리포트 만들기"
+      };
+
+      const compTitle = document.getElementById('btn-complete-title');
+      if (compTitle) compTitle.textContent = completeTitles[day];
+
+      const compDesc = document.getElementById('btn-complete-desc');
+      if (compDesc) compDesc.textContent = completeDescs[day];
+
+      const compBtnText = document.getElementById('btn-complete-text');
+      if (compBtnText) compBtnText.textContent = completeBtnText[day];
+
+      const leftBible = document.getElementById('left-content-bible');
+      const leftReading = document.getElementById('left-content-reading');
+      const leftQuizIntro = document.getElementById('left-content-quizintro');
+      const readingTabLabel = document.getElementById('reading-tab-label');
+      const chapterNav = document.getElementById('bible-chapter-nav');
+
+      if (day === 'mon' || day === 'tue' || day === 'thu') {
+        if (leftBible) leftBible.classList.remove('hidden');
+        if (leftReading) leftReading.classList.add('hidden');
+        if (leftQuizIntro) leftQuizIntro.classList.add('hidden');
+        if (chapterNav) chapterNav.classList.remove('hidden');
+        if (readingTabLabel) readingTabLabel.textContent = "📖 성경 말씀 읽기";
+        updateLeftBibleContent(day);
+      } else if (day === 'wed') {
+        if (leftBible) leftBible.classList.add('hidden');
+        if (chapterNav) chapterNav.classList.add('hidden');
+        if (leftReading) {
+          leftReading.classList.remove('hidden');
+          leftReading.innerHTML = `
+            <div class="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded-r-xl">
+              <p class="text-xs font-bold text-indigo-950">💡 3단계 킹덤 리딩 칼럼</p>
+              <p class="text-[11px] text-indigo-900 mt-1">이해할 수 없는 폭풍우 속에서도 끝까지 변하지 않는 진짜 믿음의 비밀!</p>
+            </div>
+
+            <div class="space-y-5 pr-1 text-slate-800 mt-4 text-[14px]">
+              <section>
+                <h3 class="text-base font-extrabold text-indigo-950 border-b border-indigo-100 pb-1 mb-2 flex items-center gap-1.5">
+                  <span>1. 나에게는 전부였던 그 이름, 하나님 🌟</span>
+                </h3>
+                <p class="leading-relaxed text-justify">
+                  안녕, 얘들아. 내 이름은 욥이야. 사람들이 나를 보며 ‘세상에서 가장 복 받은 사람’, ‘하나님을 경외하는 의인’이라며 부러워하던 때가 있었어. 나에겐 목숨보다 소중한 일곱 아들과 세 딸이 있었거든. 아이들이 신나게 생일 파티를 하고 돌아온 밤이면, 나는 잠든 아이들의 얼굴을 보며 늘 기도했단다. ‘혹시라도 우리 아이들이 마음으로 죄를 지어 하나님을 아프게 하진 않았을까?’ 그래서 늘 아침 일찍 예배를 드리며 아이들의 영혼을 눈물로 지켰어. 내겐 하나님 앞에 바로 서는 것, 그리고 내 가족이 하나님을 사랑하는 것이 인생의 전부이자 가장 큰 행복이었어.
+                </p>
+              </section>
+
+              <section>
+                <h3 class="text-base font-extrabold text-indigo-950 border-b border-indigo-100 pb-1 mb-2 flex items-center gap-1.5">
+                  <span>2. 숨 쉴 틈조차 주지 않았던 잔인한 폭풍 ⚡</span>
+                </h3>
+                <p class="leading-relaxed text-justify">
+                  그런데 어느 날, 믿을 수 없는 비극이 내 삶을 집어삼켰어. 나중에야 알았지만, 참소자 사탄이 내 믿음을 꺾으려고 하나님 앞에서 악한 계략을 꾸몄던 거야. 사탄의 공격이 시작되자, 내 인생은 순식간에 나락으로 떨어졌어. 한 사환이 달려와 스바 사람들이 소와 나귀를 뺏고 종들을 칼로 쳐 죽였다며 울부짖는데, 그 말이 끝나기도 전에 다른 사환이 뛰어와 하늘에서 불이 떨어져 양들이 다 타 죽었다는 거야. 또 다른 사환이 갈대아 사람들에게 낙타를 다 뺏겼다고 절규하더군. 평생 일군 모든 재산이 눈앞에서 연기처럼 사라지는데, 정말 손이 덜덜 떨리고 심장이 쿵쾅거려 숨을 쉴 수가 없었어.
+                </p>
+              </section>
+
+              <section>
+                <h3 class="text-base font-extrabold text-indigo-950 border-b border-indigo-100 pb-1 mb-2 flex items-center gap-1.5">
+                  <span>3. 피눈물이 흐르는 절망, 그리고 나의 무릎 💔</span>
+                </h3>
+                <p class="leading-relaxed text-justify">
+                  하지만 잔인한 재앙은 끝이 아니었어. 마지막 네 번째 사환이 사르르 떨리는 입술로 전한 소식은, 내 영혼을 완전히 부숴버렸단다. “거친 들에서 엄청난 바람이 몰아쳐 집이 무너졌습니다. 그 자리에 모여 있던 주인님의 소중한 열 명의 자녀들이… 모두 그 밑에 깔려 죽었습니다!” 순간 귀가 먹먹해지고 세상이 멈춘 것 같았어. 애지중지 키운 내 아이들, 어제까지만 해도 내 품에서 웃던 열 명의 아이들이 한순간에 시체가 되었다니… 피눈물이 흐르고 가슴이 찢어지다 못해 타들어 가는 것 같았어. 너무 괴로워서 겉옷을 찢어발기고 머리털을 다 밀어버렸지. 하지만 얘들아, 나는 하나님을 향해 원망의 주먹을 내지르지 않았어. 그 덜덜 떨리는 무릎으로, 처참하게 무너진 땅에 엎드려 피 토하듯 ‘예배’를 드렸단다.
+                </p>
+              </section>
+
+              <section>
+                <h3 class="text-base font-extrabold text-indigo-950 border-b border-indigo-100 pb-1 mb-2 flex items-center gap-1.5">
+                  <span>4. 눈물 속에서 만난 가장 따뜻한 품 🙏✨</span>
+                </h3>
+                <p class="leading-relaxed text-justify">
+                  울부짖으며 나는 입술을 깨물고 고백했어. “내가 태어날 때 맨몸으로 나왔으니, 갈 때도 맨몸으로 돌아갈 뿐입니다. 내게 이 선물을 주신 분도 여호와이시고, 거두어 가신 분도 여호와이시니, 오직 그분의 이름만 찬송을 받으십시오!” 나는 단지 복을 받아내려고 하나님을 믿은 게 아니었어. 고통 속에서 홀로 울 때, 하나님은 폭풍우 가운데 찾아오셔서 나를 공격한 사탄(리워야단)을 반드시 심판하겠다고 약속해 주셨지. 내가 벌을 받는 게 아니라는 걸 깨달았을 때, 나는 그 차가운 잿더미 위에서 하나님께 세상에서 가장 깊은 ‘위로’를 받았단다.
+                </p>
+                <p class="leading-relaxed text-justify mt-3">
+                  얘들아, 살아가다 보면 ‘왜 나한테만 이런 힘든 일이 생기지?’ 하고 억울해서 밤새 베개를 적실 때가 있잖아. 하지만 꼭 기억해 줘. 우리 예수님께서도 십자가에서 세상에서 가장 억울하고 참혹한 고난을 당하셨지만, 결국 그 사랑으로 사탄의 권세를 완전히 깨뜨리셨다는 걸 말이야. 그러니 눈앞이 캄캄한 폭풍우 속에서도 나를 사랑하시는 선한 목자 하나님을 끝까지 신뢰해보자. 마지막 날 우리의 모든 눈물을 닦아주실 그분을 바라보며, 변함없이 예배하는 멋진 하나님 나라 백성이 되기를 원해.
+                </p>
+              </section>
+
+              <section>
+                <div class="bg-indigo-50/80 border border-indigo-200 rounded-xl p-3.5 space-y-2 mt-4 text-justify">
+                  <p class="text-xs text-indigo-950 font-bold">🌟 [나의 다짐]</p>
+                  <p class="text-xs text-slate-800 leading-relaxed">눈앞이 캄캄한 폭풍우 속에서도 나를 끝까지 사랑하시는 선한 목자 하나님을 신뢰하며, 어떤 슬픔 앞에서도 변함없이 예배하는 멋진 하나님 나라 백성이 되겠습니다!</p>
+                  <p class="text-xs text-indigo-950 font-bold pt-2">🙏 [마무리 기도]</p>
+                  <p class="text-xs text-slate-800 leading-relaxed">사랑하는 하나님, 내 머리로 다 이해할 수 없는 억울하고 힘든 고난을 만날 때 불평과 원망 대신 욥처럼 무릎 꿇어 주님을 예배하게 해주세요. 십자가에서 무고한 고난을 받으심으로 사탄의 권세를 깨뜨리시고 우리를 위로하신 예수님을 바라보며, 선하신 하나님의 주권을 끝까지 신뢰하는 킹덤틴즈가 되게 해주세요. 예수님의 이름으로 기도합니다. 아멘! 🙏</p>
+                </div>
+              </section>
+            </div>
+          `;
+        }
+        const leftPanelTitle = document.getElementById('left-panel-title');
+        const leftPanelMeta = document.getElementById('left-panel-meta');
+        if (leftPanelTitle) leftPanelTitle.innerHTML = `<i class="fa-solid fa-book-open text-indigo-600"></i> 3단계 킹덤 리딩`;
+        if (leftPanelMeta) leftPanelMeta.textContent = "나에게는 전부였던 그 이름, 하나님";
+        if (readingTabLabel) readingTabLabel.textContent = "📖 킹덤 리딩 읽기";
+      } else if (day === 'fri') {
+        if (leftBible) leftBible.classList.add('hidden');
+        if (leftReading) leftReading.classList.add('hidden');
+        if (chapterNav) chapterNav.classList.add('hidden');
+        if (leftQuizIntro) {
+          leftQuizIntro.classList.remove('hidden');
+          leftQuizIntro.innerHTML = `
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-r-xl">
+              <p class="text-xs font-bold text-emerald-900">🎯 금요일 최종 퀴즈 가이드</p>
+              <p class="text-[11px] text-emerald-800 mt-1">한 주간 학습한 25과 욥기의 핵심 내용(의인의 고난, 사탄의 참소, 욥의 예배, 하나님의 참된 위로)을 최종 점검합니다.</p>
+            </div>
+            <div class="space-y-4 text-xs md:text-sm text-slate-600 mt-4 leading-relaxed">
+              <p>📍 5단계 퀴즈는 자습용이므로, 선택 시 즉시 정오답 색상 힌트나 강조 효과가 나타나지 않습니다.</p>
+              <p>📍 1~4번 객관식 및 O/X 문항과 5번 상황형 서술 질문(친구 지우를 향한 위로)을 모두 채운 뒤 ‘결과 리포트 만들기’를 눌러주세요.</p>
+            </div>
+          `;
+        }
+        const leftPanelTitle = document.getElementById('left-panel-title');
+        const leftPanelMeta = document.getElementById('left-panel-meta');
+        if (leftPanelTitle) leftPanelTitle.innerHTML = `<i class="fa-solid fa-gamepad text-indigo-600"></i> 주간 마침표`;
+        if (leftPanelMeta) leftPanelMeta.textContent = "최종 주간 성취도 테스트";
+        if (readingTabLabel) readingTabLabel.textContent = "🎯 퀴즈 정보";
+      }
+
+      days.forEach(d => {
+        const pane = document.getElementById(`quiz-day-${d}`);
+        if (pane) {
+          if (d === day) {
+            pane.classList.remove('hidden');
+          } else {
+            pane.classList.add('hidden');
+          }
+        }
+      });
+
+      restoreSavedInputValues(day);
+      recheckAndTriggerBadges(day);
+      switchMobileTab('reading');
+    }
+
+    function saveInputValue(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        try {
+          localStorage.setItem(`kt25_input_${id}`, el.value);
+        } catch(e) {}
+      }
+    }
+
+    function restoreSavedInputValues(day) {
+      let inputsToRestore = [];
+      if (day === 'mon') {
+        inputsToRestore = ['ans-mon-1', 'ans-mon-2', 'ans-mon-3-1', 'ans-mon-3-2', 'ans-mon-3-3', 'ans-mon-3-4', 'ans-mon-4', 'ans-mon-5'];
+      } else if (day === 'tue') {
+        inputsToRestore = ['ans-tue-1', 'ans-tue-2', 'ans-tue-3', 'ans-tue-4', 'ans-tue-5'];
+      } else if (day === 'wed') {
+        inputsToRestore = ['ans-wed-reflex'];
+      } else if (day === 'thu') {
+        inputsToRestore = ['ans-thu-1', 'ans-thu-2', 'ans-thu-3', 'ans-thu-4', 'ans-thu-5'];
+      } else if (day === 'fri') {
+        inputsToRestore = ['ans-fri-5'];
+      }
+
+      inputsToRestore.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          try {
+            const savedVal = localStorage.getItem(`kt25_input_${id}`);
+            if (savedVal !== null) {
+              el.value = savedVal;
+            }
+          } catch(e) {}
+        }
+      });
+    }
+
+    function checkMonAnswer(step) {
+      if (step === 1 || step === 2) {
+        const input = document.getElementById(`ans-mon-${step}`) ? document.getElementById(`ans-mon-${step}`).value.trim() : "";
+        saveInputValue(`ans-mon-${step}`);
+        if (WEEKLY_ANSWERS.mon[step].includes(input)) {
+          revealCorrect('mon', step);
+        }
+      } else if (step === 3) {
+        const v1 = document.getElementById('ans-mon-3-1') ? document.getElementById('ans-mon-3-1').value.trim() : "";
+        const v2 = document.getElementById('ans-mon-3-2') ? document.getElementById('ans-mon-3-2').value.trim() : "";
+        const v3 = document.getElementById('ans-mon-3-3') ? document.getElementById('ans-mon-3-3').value.trim() : "";
+        const v4 = document.getElementById('ans-mon-3-4') ? document.getElementById('ans-mon-3-4').value.trim() : "";
+        
+        saveInputValue('ans-mon-3-1');
+        saveInputValue('ans-mon-3-2');
+        saveInputValue('ans-mon-3-3');
+        saveInputValue('ans-mon-3-4');
+
+        const ok1 = WEEKLY_ANSWERS.mon[3].c1.includes(v1);
+        const ok2 = WEEKLY_ANSWERS.mon[3].c2.includes(v2);
+        const ok3 = WEEKLY_ANSWERS.mon[3].c3.includes(v3);
+        const ok4 = WEEKLY_ANSWERS.mon[3].c4.includes(v4);
+
+        if (ok1 && ok2 && ok3 && ok4) {
+          revealCorrect('mon', 3);
+        }
+      } else if (step === 4) {
+        const input = document.getElementById('ans-mon-4') ? document.getElementById('ans-mon-4').value.trim() : "";
+        saveInputValue('ans-mon-4');
+        if (WEEKLY_ANSWERS.mon[4].includes(input)) {
+          revealCorrect('mon', 4);
+        }
+      } else if (step === 5) {
+        const text = document.getElementById('ans-mon-5') ? document.getElementById('ans-mon-5').value.trim() : "";
+        saveInputValue('ans-mon-5');
+        daySolvedState.mon[5] = text.length >= 3;
+        safeSetStorage('kt25_day_solved_state', daySolvedState);
+      }
+    }
+
+    function checkTueAnswer(step) {
+      if (step >= 1 && step <= 4) {
+        const input = document.getElementById(`ans-tue-${step}`) ? document.getElementById(`ans-tue-${step}`).value.trim() : "";
+        saveInputValue(`ans-tue-${step}`);
+        if (WEEKLY_ANSWERS.tue[step].includes(input)) {
+          revealCorrect('tue', step);
+        }
+      } else if (step === 5) {
+        const text = document.getElementById('ans-tue-5') ? document.getElementById('ans-tue-5').value.trim() : "";
+        saveInputValue('ans-tue-5');
+        daySolvedState.tue[5] = text.length >= 3;
+        safeSetStorage('kt25_day_solved_state', daySolvedState);
+      }
+    }
+
+    function checkWedAnswer() {
+      const text = document.getElementById('ans-wed-reflex') ? document.getElementById('ans-wed-reflex').value.trim() : "";
+      saveInputValue('ans-wed-reflex');
+      daySolvedState.wed.reflex = text.length >= 3;
+      safeSetStorage('kt25_day_solved_state', daySolvedState);
+    }
+
+    function checkThuAnswer(step) {
+      let isCorrect = false;
+
+      if (step >= 1 && step <= 5) {
+        const inVal = document.getElementById(`ans-thu-${step}`) ? document.getElementById(`ans-thu-${step}`).value.trim() : "";
+        saveInputValue(`ans-thu-${step}`);
+        isCorrect = WEEKLY_ANSWERS.thu[step].includes(inVal);
+      }
+
+      const badge = document.getElementById(`badge-thu-${step}`);
+      const card = document.getElementById(`thu-card-${step}`);
+      const explain = document.getElementById(`explain-thu-${step}`);
+
+      if (isCorrect) {
+        daySolvedState.thu[step] = true;
+        if (badge) {
+          badge.classList.remove('hidden');
+          badge.classList.add('flex');
+        }
+        if (card) {
+          card.classList.add('bg-emerald-50/25', 'border-emerald-200');
+        }
+        if (explain) {
+          explain.classList.remove('hidden');
+          explain.classList.add('block');
+        }
+      } else {
+        daySolvedState.thu[step] = false;
+        if (badge) {
+          badge.classList.add('hidden');
+          badge.classList.remove('flex');
+        }
+        if (card) {
+          card.classList.remove('bg-emerald-50/25', 'border-emerald-200');
+        }
+        if (explain) {
+          explain.classList.add('hidden');
+          explain.classList.remove('block');
+        }
+      }
+
+      safeSetStorage('kt25_day_solved_state', daySolvedState);
+    }
+
+    function selectFriQuiz(questionNum, optionNum) {
+      friSelectedChoices[questionNum] = optionNum;
+      safeSetStorage('kt25_fri_selected', friSelectedChoices);
+
+      if (questionNum === 1) {
+        const btn1 = document.getElementById('fri-btn-1-1');
+        const btn2 = document.getElementById('fri-btn-1-2');
+        if (btn1) btn1.className = "border-2 border-slate-200 rounded-2xl p-4 text-slate-700 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex flex-col items-center gap-2";
+        if (btn2) btn2.className = "border-2 border-slate-200 rounded-2xl p-4 text-slate-700 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex flex-col items-center gap-2";
+      } else {
+        for (let i = 1; i <= 4; i++) {
+          const btn = document.getElementById(`fri-btn-${questionNum}-${i}`);
+          if (btn) btn.className = "text-left border-2 border-slate-200 rounded-2xl p-3.5 hover:border-indigo-500 hover:bg-indigo-50/25 transition-all flex gap-3 items-center w-full";
+        }
+      }
+
+      const selectedBtn = document.getElementById(`fri-btn-${questionNum}-${optionNum}`);
+      if (selectedBtn) {
+        if (questionNum === 1) {
+          selectedBtn.className = "border-2 border-indigo-600 bg-indigo-50/50 text-indigo-950 rounded-2xl p-4 transition-all flex flex-col items-center gap-2 shadow-sm font-bold";
+        } else {
+          selectedBtn.className = "text-left border-2 border-indigo-600 bg-indigo-50/50 rounded-2xl p-3.5 transition-all flex gap-3 items-center w-full shadow-sm font-semibold";
+        }
+      }
+
+      daySolvedState.fri[questionNum] = (optionNum !== null);
+      safeSetStorage('kt25_day_solved_state', daySolvedState);
+    }
+
+    function checkFriSubjective() {
+      const text = document.getElementById('ans-fri-5') ? document.getElementById('ans-fri-5').value.trim() : "";
+      saveInputValue('ans-fri-5');
+      daySolvedState.fri[5] = text.length >= 3;
+      safeSetStorage('kt25_day_solved_state', daySolvedState);
+    }
+
+    function revealCorrect(day, step, showToast = true) {
+      if (daySolvedState[day][step]) return;
+      
+      daySolvedState[day][step] = true;
+      safeSetStorage('kt25_day_solved_state', daySolvedState);
+      
+      const badge = document.getElementById(`badge-${day}-${step}`);
+      if (badge) {
+        badge.classList.remove('hidden');
+        badge.classList.add('flex');
+      }
+
+      const explain = document.getElementById(`explain-${day}-${step}`);
+      if (explain) {
+        explain.classList.remove('hidden');
+        explain.classList.add('block');
+      }
+
+      const card = document.getElementById(`${day}-card-${step}`);
+      if (card) {
+        card.classList.add('bg-emerald-50/25', 'border-emerald-200');
+      }
+
+      if (showToast) {
+        showNotification(`${step}번 정답을 찾으셨습니다! 해설 카드가 열렸습니다.`);
+      }
+    }
+
+    function recheckAndTriggerBadges(day) {
+      if (day === 'mon') {
+        for (let i = 1; i <= 4; i++) {
+          if (daySolvedState.mon[i]) {
+            daySolvedState.mon[i] = false;
+            revealCorrect('mon', i, false);
+          }
+        }
+      } else if (day === 'tue') {
+        for (let i = 1; i <= 4; i++) {
+          if (daySolvedState.tue[i]) {
+            daySolvedState.tue[i] = false;
+            revealCorrect('tue', i, false);
+          }
+        }
+      } else if (day === 'thu') {
+        for (let i = 1; i <= 5; i++) {
+          checkThuAnswer(i);
+        }
+      } else if (day === 'fri') {
+        for (let q = 1; q <= 4; q++) {
+          const opt = friSelectedChoices[q];
+          if (opt !== null) {
+            selectFriQuiz(q, opt);
+          }
+        }
+      }
+    }
+
+    function renderDayTabs() {
+      const koreanDays = { mon: '월(1단계)', tue: '화(2단계)', wed: '수(3단계)', thu: '목(4단계)', fri: '금(5단계)' };
+      days.forEach(d => {
+        const tabBtn = document.getElementById(`day-tab-${d}`);
+        if (tabBtn) {
+          const isUnlocked = unlockedDays[d];
+          const isCurrent = (d === currentDay);
+          
+          let label = koreanDays[d];
+          if (!isUnlocked) label += ' 🔒';
+          tabBtn.textContent = label;
+          
+          if (isCurrent) {
+            tabBtn.className = "px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-indigo-600 text-white transition-all shadow-sm shrink-0";
+          } else if (!isUnlocked) {
+            tabBtn.className = "px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-slate-100 text-slate-400 cursor-not-allowed opacity-60 transition-all shrink-0";
+          } else {
+            tabBtn.className = "px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0";
+          }
+        }
+      });
+    }
+
+    function switchMobileTab(tabName) {
+      const paneReading = document.getElementById('pane-reading');
+      const paneActivity = document.getElementById('pane-activity');
+      const btnReading = document.getElementById('tab-btn-reading');
+      const btnActivity = document.getElementById('tab-btn-activity');
+
+      if (tabName === 'reading') {
+        if (paneReading) paneReading.classList.remove('hidden');
+        if (paneActivity) paneActivity.classList.add('hidden');
+        if (btnReading) btnReading.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-lg text-indigo-800 bg-indigo-50 transition-all flex items-center justify-center gap-1.5";
+        if (btnActivity) btnActivity.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-lg text-slate-500 hover:text-slate-800 transition-all flex items-center justify-center gap-1.5";
+      } else {
+        if (paneReading) paneReading.classList.add('hidden');
+        if (paneActivity) {
+          paneActivity.classList.remove('hidden');
+          paneActivity.classList.add('flex');
+        }
+        if (btnActivity) btnActivity.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-lg text-indigo-800 bg-indigo-50 transition-all flex items-center justify-center gap-1.5";
+        if (btnReading) btnReading.className = "flex-1 py-2 text-xs md:text-sm font-bold rounded-lg text-slate-500 hover:text-slate-800 transition-all flex items-center justify-center gap-1.5";
+      }
+    }
+
+    function showNotification(message, isSuccess = true) {
+      const alertBox = document.getElementById('alert-box');
+      const alertMsg = document.getElementById('alert-msg');
+      if (alertMsg) alertMsg.innerHTML = message;
+      if (alertBox) {
+        if (isSuccess) {
+          alertBox.className = "fixed bottom-6 right-6 left-6 sm:left-auto bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-0 opacity-100 transition-all duration-300 z-50 pointer-events-none max-w-sm";
+        } else {
+          alertBox.className = "fixed bottom-6 right-6 left-6 sm:left-auto bg-rose-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-0 opacity-100 transition-all duration-300 z-50 pointer-events-none max-w-sm";
+        }
+      }
+      setTimeout(() => {
+        if (alertBox) alertBox.className = "fixed bottom-6 right-6 left-6 sm:left-auto bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none max-w-sm";
+      }, 3500);
+    }
+
+    function generateReport() {
+      if (currentDay === 'mon') {
+        for(let i=1; i<=4; i++) checkMonAnswer(i);
+        checkMonAnswer(5);
+      } else if (currentDay === 'tue') {
+        for(let i=1; i<=4; i++) checkTueAnswer(i);
+        checkTueAnswer(5);
+      } else if (currentDay === 'wed') {
+        checkWedAnswer();
+      } else if (currentDay === 'thu') {
+        for(let i=1; i<=5; i++) checkThuAnswer(i);
+      } else if (currentDay === 'fri') {
+        checkFriSubjective();
+      }
+
+      let isDayComplete = false;
+      if (currentDay === 'mon' || currentDay === 'tue' || currentDay === 'thu' || currentDay === 'fri') {
+        isDayComplete = Object.values(daySolvedState[currentDay]).every(Boolean);
+      } else if (currentDay === 'wed') {
+        isDayComplete = daySolvedState.wed.reflex;
+      }
+
+      if (!isDayComplete) {
+        showNotification("오늘 해당하는 모든 질문과 빈칸(서술형 포함)을 채우셔야 결과 리포트가 열리고 다음 요일이 해금됩니다! ✏️", false);
+        return;
+      }
+
+      const repTitle = document.getElementById('rep-title');
+      const repStageBadge = document.getElementById('rep-stage-badge');
+      const repAnswersList = document.getElementById('rep-answers-list');
+      if (repAnswersList) repAnswersList.innerHTML = '';
+
+      if (currentDay === 'mon') {
+        if (repStageBadge) repStageBadge.textContent = "월요일 큐티 완료";
+        if (repTitle) repTitle.textContent = "1단계: 의인에게 닥친 억울한 고난 (욥 1:1-22)";
+
+        const a1 = document.getElementById('ans-mon-1') ? document.getElementById('ans-mon-1').value.trim() : "";
+        const a2 = document.getElementById('ans-mon-2') ? document.getElementById('ans-mon-2').value.trim() : "";
+        const c1 = document.getElementById('ans-mon-3-1') ? document.getElementById('ans-mon-3-1').value.trim() : "";
+        const c2 = document.getElementById('ans-mon-3-2') ? document.getElementById('ans-mon-3-2').value.trim() : "";
+        const c3 = document.getElementById('ans-mon-3-3') ? document.getElementById('ans-mon-3-3').value.trim() : "";
+        const c4 = document.getElementById('ans-mon-3-4') ? document.getElementById('ans-mon-3-4').value.trim() : "";
+        const a4 = document.getElementById('ans-mon-4') ? document.getElementById('ans-mon-4').value.trim() : "";
+        const a5 = document.getElementById('ans-mon-5') ? document.getElementById('ans-mon-5').value.trim() : "";
+
+        injectReportItem(1, "하나님께서 자랑스럽게 인정하신 온전한 사람", `칭찬받은 의인: ${a1}`);
+        injectReportItem(2, "욥의 경건을 이기적인 것이라 비난한 참소자", `고발한 대적: ${a2}`);
+        injectReportItem(3, "욥이 한꺼번에 잃어버린 4가지 가축", `가축: ${c1}, ${c2}, ${c3}, ${c4}`);
+        injectReportItem(4, "무너진 집 아래 깔려 죽은 소중한 존재", `소중한 ${a4}`);
+        injectReportItem(5, "다 이해되지 않는 역경 속에서도 하나님을 신뢰하는 마음", a5, true);
+      }
+
+      else if (currentDay === 'tue') {
+        if (repStageBadge) repStageBadge.textContent = "화요일 큐티 완료";
+        if (repTitle) repTitle.textContent = "2단계: 원망 대신 드린 예배와 참된 신뢰 (욥 1:20-22, 42장)";
+
+        const a1 = document.getElementById('ans-tue-1') ? document.getElementById('ans-tue-1').value.trim() : "";
+        const a2 = document.getElementById('ans-tue-2') ? document.getElementById('ans-tue-2').value.trim() : "";
+        const a3 = document.getElementById('ans-tue-3') ? document.getElementById('ans-tue-3').value.trim() : "";
+        const a4 = document.getElementById('ans-tue-4') ? document.getElementById('ans-tue-4').value.trim() : "";
+        const a5 = document.getElementById('ans-tue-5') ? document.getElementById('ans-tue-5').value.trim() : "";
+
+        injectReportItem(1, "모든 것을 잃은 절망 속에서 욥이 가장 먼저 행한 것", `땅에 엎드려 하나님을 ${a1}함`);
+        injectReportItem(2, "주신 이도 거두신 이도 여호와시라 찬송한 인물", `위대한 신앙 고백자: ${a2}`);
+        injectReportItem(3, "재앙 속에서도 결코 하나님을 향해 하지 않은 것", `하나님을 향하여 ${a3}하지 아니함`);
+        injectReportItem(4, "폭풍우 가운데 나타나 은혜를 베푸신 분", `${a4} 하나님`);
+        injectReportItem(5, "이해할 수 없는 고난 속에서 온전한 신뢰로 나아갈 나의 다짐", a5, true);
+      }
+
+      else if (currentDay === 'wed') {
+        if (repStageBadge) repStageBadge.textContent = "수요일 큐티 완료";
+        if (repTitle) repTitle.textContent = "3단계: 킹덤 리딩 칼럼 묵상";
+
+        const reflex = document.getElementById('ans-wed-reflex') ? document.getElementById('ans-wed-reflex').value.trim() : "";
+        injectReportItem("📖", "눈물 속에서도 선하신 하나님을 찬양하겠다는 나의 고백", reflex, true);
+      }
+
+      else if (currentDay === 'thu') {
+        if (repStageBadge) repStageBadge.textContent = "목요일 큐티 완료";
+        if (repTitle) repTitle.textContent = "4단계: 하나님 나라 관점 (핵심 단어: 섭리와 신뢰)";
+
+        const a1 = document.getElementById('ans-thu-1') ? document.getElementById('ans-thu-1').value.trim() : "";
+        const a2 = document.getElementById('ans-thu-2') ? document.getElementById('ans-thu-2').value.trim() : "";
+        const a3 = document.getElementById('ans-thu-3') ? document.getElementById('ans-thu-3').value.trim() : "";
+        const a4 = document.getElementById('ans-thu-4') ? document.getElementById('ans-thu-4').value.trim() : "";
+        const a5 = document.getElementById('ans-thu-5') ? document.getElementById('ans-thu-5').value.trim() : "";
+
+        injectReportItem(1, "하나님 나라 백성도 죄와 상관없이 만날 수 있는 것", `뜻하지 않게 찾아오는 ${a1}`);
+        injectReportItem(2, "상황 속에서도 끝까지 붙잡아야 할 바른 태도", `하나님의 주권과 선하심을 온전히 ${a2}`);
+        injectReportItem(3, "하나님이 내 편이심을 확인하고 누린 은혜", `영혼의 진짜 ${a3}`);
+        injectReportItem(4, "예수님의 십자가 죽음으로 깨뜨리신 것", `고난 배후에 있는 사탄의 ${a4}`);
+        injectReportItem(5, "소교리문답 8문: 선하신 계획을 이루시는 하나님의 방법", `창조와 ${a5}의 사역`);
+      }
+
+      else if (currentDay === 'fri') {
+        if (repStageBadge) repStageBadge.textContent = "금요일 주간 성취 완료";
+        if (repTitle) repTitle.textContent = "5단계: 킹덤 최종 퀴즈 성적표";
+
+        const selected_1 = friSelectedChoices[1] === 1 ? "① O 응답 (정답: 의인도 뜻하지 않은 고난을 겪을 수 있음)" : "② X 응답";
+        const selected_2 = friSelectedChoices[2] === 3 ? "③ 참소자 사탄이 욥을 하나님 앞에서 악하게 고발했기 때문 (정답)" : `선택: ${friSelectedChoices[2]}번`;
+        const selected_3 = friSelectedChoices[3] === 3 ? "③ 슬퍼했지만 오히려 땅에 엎드려 '예배'했어요 (정답)" : `선택: ${friSelectedChoices[3]}번`;
+        const selected_4 = friSelectedChoices[4] === 2 ? "② 고난의 이유를 알려주시며 큰 '위로'를 얻게 하셨어요 (정답)" : `선택: ${friSelectedChoices[4]}번`;
+        const subjectiveText = document.getElementById('ans-fri-5') ? document.getElementById('ans-fri-5').value.trim() : "";
+
+        injectReportItem(1, "Q1. 의인의 무고한 고난 가능 여부", selected_1);
+        injectReportItem(2, "Q2. 욥에게 고난이 찾아온 진짜 원인", selected_2);
+        injectReportItem(3, "Q3. 전 재산과 자녀를 잃었을 때 욥의 첫 반응", selected_3);
+        injectReportItem(4, "Q4. 폭풍우 가운데 하나님께서 주신 말씀", selected_4);
+        injectReportItem("💬", "Q5. '내가 죄지어서 벌받나' 우는 친구 지우를 위한 성경적 위로", subjectiveText, true);
+      }
+
+      const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' };
+      const today = new Date();
+      const reportDate = document.getElementById('report-date');
+      if (reportDate) reportDate.textContent = today.toLocaleDateString('ko-KR', options);
+
+      // Lock Progression Logic (Monday to Friday)
+      let newlyUnlocked = null;
+      if (currentDay === 'mon' && !unlockedDays.tue) { unlockedDays.tue = true; newlyUnlocked = '화요일(2단계)'; }
+      else if (currentDay === 'tue' && !unlockedDays.wed) { unlockedDays.wed = true; newlyUnlocked = '수요일(3단계)'; }
+      else if (currentDay === 'wed' && !unlockedDays.thu) { unlockedDays.thu = true; newlyUnlocked = '목요일(4단계)'; }
+      else if (currentDay === 'thu' && !unlockedDays.fri) { unlockedDays.fri = true; newlyUnlocked = '금요일(5단계)'; }
+
+      if (newlyUnlocked) {
+        safeSetStorage('kt25_unlocked_days', unlockedDays);
+        renderDayTabs();
+        showNotification(`🎉 훌륭합니다! 오늘의 고백이 저장되어 <strong>[${newlyUnlocked}]</strong> 단계가 활성화되었습니다!`);
+      }
+
+      const modal = document.getElementById('report-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function injectReportItem(num, label, text, isLong = false) {
+      const repAnswersList = document.getElementById('rep-answers-list');
+      if (!repAnswersList) return;
+      
+      const itemHTML = `
+        <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-xl border border-indigo-100 shadow-sm text-justify">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-5 h-5 bg-indigo-600 text-white rounded-full text-xs font-bold flex items-center justify-center shrink-0">${num}</span>
+            <span class="text-xs font-bold text-slate-800">${label}</span>
+          </div>
+          <p class="${isLong ? 'text-slate-800 font-medium italic leading-relaxed whitespace-pre-wrap pl-7 text-xs md:text-sm mt-1' : 'text-sm pl-7 text-indigo-800 font-bold'}">
+            ${isLong ? text : `나의 성찰: <span class="bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">${text || "(미작성)"}</span>`}
+          </p>
+        </div>
+      `;
+      repAnswersList.insertAdjacentHTML('beforeend', itemHTML);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('report-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function shareAppUrl() {
+      const dummy = document.createElement('input');
+      const text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+      showNotification('친구들과 함께 큐티할 수 있도록 초대 주소가 복사되었습니다! 🔗');
+    }
+
+    function openResetModal() {
+      const resetModal = document.getElementById('reset-confirm-modal');
+      if (resetModal) resetModal.classList.remove('hidden');
+    }
+
+    function closeResetModal() {
+      const resetModal = document.getElementById('reset-confirm-modal');
+      if (resetModal) resetModal.classList.add('hidden');
+    }
+
+    function confirmResetProgress() {
+      try {
+        localStorage.removeItem('kt25_unlocked_days');
+        localStorage.removeItem('kt25_day_solved_state');
+        localStorage.removeItem('kt25_fri_selected');
+        
+        const inputsToClear = [
+          'ans-mon-1', 'ans-mon-2', 'ans-mon-3-1', 'ans-mon-3-2', 'ans-mon-3-3', 'ans-mon-3-4', 'ans-mon-4', 'ans-mon-5',
+          'ans-tue-1', 'ans-tue-2', 'ans-tue-3', 'ans-tue-4', 'ans-tue-5',
+          'ans-wed-reflex',
+          'ans-thu-1', 'ans-thu-2', 'ans-thu-3', 'ans-thu-4', 'ans-thu-5',
+          'ans-fri-5'
+        ];
+        inputsToClear.forEach(id => localStorage.removeItem(`kt25_input_${id}`));
+      } catch(e) {}
+      location.reload();
+    }
+
+    function downloadReportImage() {
+      const element = document.getElementById('capture-zone');
+      if (!element) return;
+      
+      showNotification('결과 고백 카드를 고화질 캡처 이미지로 변환하고 있습니다. 잠시만 기다려주세요...', true);
+      
+      html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#fbfbfe',
+        logging: false
+      }).then(canvas => {
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        const todayStr = new Date().toISOString().slice(0,10);
+        
+        link.download = `킹덤틴즈_25과_욥기_리포트_${currentDay.toUpperCase()}_${todayStr}.png`;
+        link.href = image;
+        link.click();
+        
+        showNotification('이미지 다운로드가 완료되었습니다! 소모임 리더 및 부모님께 공유해 보세요.', true);
+        closeModal();
+      }).catch(err => {
+        showNotification('이미지 변환에 실패했습니다. 환경을 다시 확인해 주세요.', false);
+        console.error(err);
+      });
+    }
+
+    window.onload = function() {
+      renderDayTabs();
+      switchDay('mon');
+    }
+  </script>
+</body>
+</html>
